@@ -6,7 +6,7 @@ namespace DependencyInjection
 	{
 		public void SendReceipt(OrderInfo orderInfo)
 		{
-			throw new NotImplementedException();
+			Console.WriteLine("Receipt sent to customer {0} via email", orderInfo.CustomerName);
 		}
 	}
 }

@@ -6,7 +6,7 @@ namespace DependencyInjection
 	{
 		public void Save()
 		{
-			Console.WriteLine("Customer purchase saved.");
+			Console.WriteLine("Product inventory Updated.");
 		}
 	}
 }

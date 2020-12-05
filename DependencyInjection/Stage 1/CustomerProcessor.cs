@@ -16,7 +16,7 @@ namespace DependencyInjection
 			customerRepository.Save();
 			productRepository.Save();
 
-			Console.WriteLine(string.Format("Customer record for '{0}' update with purchase"));
+			Console.WriteLine(string.Format("Customer record for {0} update with purchase of product {1}", customer, product));
 		}
 	}
 }

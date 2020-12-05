@@ -15,7 +15,7 @@ namespace DependencyInjection
 			CustomerProcessor customerProcessor = new CustomerProcessor();
 			Notifier notifier = new Notifier();
 
-			billingProcessor.ProcessPayment(orderInfo.CustomerName, orderInfo.CreditCard, orderInfo.Email, orderInfo.Price, orderInfo.Price);
+			billingProcessor.ProcessPayment(orderInfo.CustomerName, orderInfo.CreditCard, orderInfo.Email, orderInfo.Price);
 			customerProcessor.UpdateCustomerOrder(orderInfo.CustomerName, orderInfo.Product);
 			notifier.SendReceipt(orderInfo);
 
