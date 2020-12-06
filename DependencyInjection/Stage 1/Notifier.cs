@@ -1,6 +1,7 @@
 ﻿using System;
+using DependencyInjection;
 
-namespace DependencyInjection
+namespace DependencyInjection.Stage_1
 {
 	internal class Notifier
 	{

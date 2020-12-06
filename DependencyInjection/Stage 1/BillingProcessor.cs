@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DependencyInjection
+namespace DependencyInjection.Stage_1
 {
 	class BillingProcessor
 	{

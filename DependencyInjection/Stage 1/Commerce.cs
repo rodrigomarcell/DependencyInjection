@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DependencyInjection
+namespace DependencyInjection.Stage_1
 {
 		public class Commerce
 	{

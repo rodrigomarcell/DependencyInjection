@@ -18,9 +18,12 @@ namespace DependencyInjection
 				Console.WriteLine("1 - Stage 2");
 				Console.WriteLine("1 - Stage 3");
 				Console.WriteLine("0 - Exit");
+				Console.WriteLine();
 
-				Console.WriteLine("Select demo: ");
+				Console.Write("Select demo: ");
+
 				string choice = Console.ReadLine();
+
 				if (choice == "0")
 				{
 					exit = true;
@@ -44,26 +47,35 @@ namespace DependencyInjection
 					{
 						case "1":
 							#region Stage 1
-							DependencyInjection.Commerce commerce1 = new DependencyInjection.Commerce();
+							DependencyInjection.Stage_1.Commerce commerce1 = new DependencyInjection.Stage_1.Commerce();
 							commerce1.ProcessOrder(orderInfo);
-							#endregion	
+							#endregion
 							break;
 
 						case "2":
 							#region Stage 2
-							DependencyInjection.Commerce commerce2 = new DependencyInjection.Commerce();
+							Stage_2.Commerce commerce2 =
+								new Stage_2.Commerce(
+									new Stage_2.BillingProcessor(),
+									new Stage_2.CustomerProcessor(
+										new Stage_2.CustomerRepository(),
+										new Stage_2.ProductRepository()),
+									new Stage_2.Notifier());
 							commerce2.ProcessOrder(orderInfo);
 							#endregion
 							break;
 						
 						case "3":
 							#region Stage 3
-							DependencyInjection.Commerce commerce3 = new DependencyInjection.Commerce();
+							DependencyInjection.Stage_1.Commerce commerce3 = new DependencyInjection.Stage_1.Commerce();
 							commerce3.ProcessOrder(orderInfo);
 							#endregion
 							break;
 					}
 
+					Console.WriteLine();
+					Console.WriteLine("Press 'Enter' for menu.");
+					Console.ReadLine();
 				}
 
 			}
