@@ -19,11 +19,10 @@ namespace DependencyInjection.Stage_3
 		
 		void ICustomerProcessor.UpdateCustomerOrder(string customer, string product)
 		{
-			ICustomerRepository customerRepository = new CustomerRepository();
-			IProductRepository productRepository = new ProductRepository();
-			
-			customerRepository.Save();
-			productRepository.Save();
+
+
+			_CustomerRepository.Save();
+			_ProductRepository.Save();
 
 			Console.WriteLine(string.Format("Customer record for {0} update with purchase of product {1}", customer, product));
 		}

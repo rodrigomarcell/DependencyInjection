@@ -87,6 +87,7 @@
     <Compile Include="Stage 3\Commerce.cs" />
     <Compile Include="Stage 3\CustomerProcessor.cs" />
     <Compile Include="Stage 3\CustomerRepository.cs" />
+    <Compile Include="Stage 3\Logger.cs" />
     <Compile Include="Stage 3\Notifier.cs" />
     <Compile Include="Stage 3\ProductRepository.cs" />
   </ItemGroup>

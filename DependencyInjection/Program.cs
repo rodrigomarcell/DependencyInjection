@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,8 @@ namespace DependencyInjection
 {
 	class Program
 	{
+		public static IContainer Container;
+
 		static void Main(string[] args)
 		{
 			bool exit = false;
@@ -69,7 +72,25 @@ namespace DependencyInjection
 						case "3":
 							#region Stage 3
 							ContainerBuilder builder = new ContainerBuilder();
-							//builder.RegisterType < Stage_3.Commerce() >;
+							
+							builder.RegisterType<Stage_3.Commerce>();
+							builder.RegisterType<Stage_3.Notifier>().As<Stage_3.INotifier>();
+							
+
+							builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+								.Where(t => t.Name.EndsWith("Processor") && t.Namespace.EndsWith("Stage_3"))
+								.As(t => t.GetInterfaces().FirstOrDefault(i => i.Name == "I" + t.Name));
+
+							builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+								.Where(t => t.Name.EndsWith("Repository") && t.Namespace.EndsWith("Stage_3"))
+								.As(t => t.GetInterfaces().FirstOrDefault(i => i.Name == "I" + t.Name));
+
+							builder.RegisterType<Stage_3.Logger>().As<Stage_3.ILogger>();
+
+							Container = builder.Build();
+							Stage_3.Commerce commerce3 = Container.Resolve<Stage_3.Commerce>();
+							commerce3.ProcessOrder(orderInfo);
+
 							#endregion
 							break;
 					}
