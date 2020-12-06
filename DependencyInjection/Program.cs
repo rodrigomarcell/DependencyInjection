@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -67,8 +68,8 @@ namespace DependencyInjection
 						
 						case "3":
 							#region Stage 3
-							DependencyInjection.Stage_1.Commerce commerce3 = new DependencyInjection.Stage_1.Commerce();
-							commerce3.ProcessOrder(orderInfo);
+							ContainerBuilder builder = new ContainerBuilder();
+							//builder.RegisterType < Stage_3.Commerce() >;
 							#endregion
 							break;
 					}
